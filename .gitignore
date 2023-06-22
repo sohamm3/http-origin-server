@@ -1,0 +1,30 @@
+# Runtime data directory - etag.csv, cookies.txt, all *.log files, and the
+# gzipped log archives under var/userlogFiles/ are generated at runtime, not source.
+/var/
+
+# Python bytecode cache directories at any depth (root, httpserver/, scripts/, tests/).
+**/__pycache__/
+
+# Compiled Python bytecode anywhere.
+*.pyc
+
+# Environment files holding credentials (the server reads HTTP_AUTH_* from the environment; never commit a dotenv).
+.env
+.env.*
+*.env
+
+# Stray compressed test artifacts (e.g. a leftover upload); runtime log .gz archives are already covered by /var/ above.
+*.tar.gz
+
+# OS directory-metadata files.
+.DS_Store
+Thumbs.db
+
+# Editor / IDE project directories and Vim swap files.
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Development scratch notes.
+IMPLEMENTATION_NOTES.md

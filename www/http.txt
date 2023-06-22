@@ -1,0 +1,80 @@
+Points from discussion on HTTP project
+HTTP RFC
+https://datatracker.ietf.org/doc/html/rfc2616
+  3.2   Uniform Resource Identifiers ................................18
+   http_URL = "http:" "//" host [ ":" port ] [ abs_path [ "?" query ]]  
+
+GET, POST, PUT, HEAD, DELETE  --> Learn these methods.
+
+Headers: allmost all headers
+
+Multi-threaded:  You have already written a multi-threaded server.
+
+Cookies: NOT going to implement PHP bindings. DO make-shift work.
+        The server will create a cookie - that is some random number, and write it in a cookie file, 
+        along with details of the client. 
+When the next GET request comes, it will just keep incremeneting the count of requests in the cookie file.
+
+persistent and non-persistent connections:  By default, have non-persistent connections. 
+                                            Using appropriate headers implement persistent connection
+
+logging with levels of logging:
+Example:
+#define DEBUG 1
+#define DEVELOPER 2
+#define USER 0
+int main(int argc, char *argv[]) {
+    if(atoi(argv[1]) == 2)
+        enable printing++
+    if(it's 1)
+        enable printing+
+    if it's 0
+        enable printing
+    int c, d, ef;
+    c = .....expr ....
+    dprintf(1, "Debug info: c is %n\", c);
+    d = .....expr ....
+    f();
+    dprintf(0, "Debug info: g returned %n\", y);
+    y = g();
+    dprintf(2, "Debug info: g returned %n\", y);
+    printf("....");
+    return 0;
+}
+
+handling file permissions: calling appropriate python functions, 
+                            to determine whether you have the required permissions (read, write, etc.), 
+                            on the concerned files/folders/both.
+
+stop-start-restart commands:
+python3 ./httpserver.py [stop|start|restart]
+
+Server configuration : 
+                        config file with DocumentRoot, 
+                        log file pathname, 
+                        max simulateneous connections, 
+                        persistent/non-prestient;
+
+#List of headers will be specified separately
+
+Things not mentioned (but obviously assumed)
+all status codes
+handling different types of media
+Character sets
+
+Not expected
+access authentication
+Many security considerations (good if they get covered)
+
+Testing code:
+You have to write python programs to automatically test ALL the functionality of your web-server.
+program should take care of error possibilities, wrong requests, everything.
+Also test the server for multi-threading.
+SIGNIFICANT amount of code.
+
+Basic HTTP 5 method = 15 marks;
+Headers: 10 marks;
+multi-threading = 5 marks;
+Config file, cookies: 5 marks;
+logging, overall code quality= 5 marks;
+Automated Testing of all options = 10 marks.

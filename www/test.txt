@@ -1,0 +1,75 @@
+
+Methods:
+
+GET
+POST
+PUT
+HEAD
+DELETE
+
+
+
+HTTP headers to be implemented in course project
+
+- Accept
+- Accept-Charset
+Content-Encoding
+- Accept-Encoding
+- Content-Length
+Content-MD5
+- Content-Type
+- Date
+- Host
+If-Modified-Since
+If-Range
+If-Unmodified-Since
+Range
+- User-Agent
+Accept-Ranges
+- Content-Location
+- ETag
+Expires
+- Last-Modified
+- Location
+- Server
+Set-Cookie
+- Transfer-Encoding
+- Connection
+- Keep-Alive
+- Allow
+--
+And all the other headers that need to be implemented to ensure 
+that the above headers can be implemented.
+
+
+            200 : 'OK',
+            201 : 'Created',
+            204 : 'No Content',
+                301 : 'Moved Permanently',
+                304 : 'Not Modified',
+            400 : 'Bad Request',
+            401 : 'Unauthorized',
+            403 : 'Forbidden',
+            404 : 'Not Found',
+                408 : 'Request Timeout',
+			411 : 'Length Required',
+            413 : 'Payload Too Large',
+            414 : 'URI Too Long',
+			415 : 'Unsupported Media Type',
+            500 : 'Internal Server Error',
+            501 : 'Not Implemented',
+                502 : 'Bad Gateway',
+			503 : 'Service Unavailable',	
+            505 : 'HTTP Version not Supported'
+
+
+-- postman shows error on 404 :
+            Error: Parse Error: Invalid header token
+            Solved : added [content type] header
+
+to extract from data: 
+- Version
+- filename
+- Methods
+- user Agent
+-- data from put method
