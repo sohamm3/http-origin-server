@@ -100,7 +100,7 @@ export HTTP_AUTH_USER=youruser
 export HTTP_AUTH_PASS=yourpass
 ```
 
-If these variables are unset, `config.py` falls back to the in-source defaults `soham` / `Soham@2020`. DELETE therefore authenticates against those defaults when the environment is not set - it does not reject everything. Set the variables to use your own credentials. (Credentials travel as base64 Basic auth over plaintext; see Known limitations.)
+If these variables are unset, `config.py` falls back to the hardcoded defaults when the variables are unset. DELETE therefore authenticates against those defaults when the environment is not set - it does not reject everything. Set the variables to use your own credentials. (Credentials travel as base64 Basic auth over plaintext)
 
 Initialize the ETag store before the first run:
 
@@ -226,7 +226,7 @@ CRED=$(printf '%s:%s' "$HTTP_AUTH_USER" "$HTTP_AUTH_PASS" | base64)
 curl -si -X DELETE http://localhost:8080/put_test.txt \
   -H "Authorization: Basic $CRED"
 # Expected: HTTP/1.1 200 OK (file removed from www/)
-# With default creds the value is: Authorization: Basic c29oYW06U29oYW1AMjAyMA==
+# Encode your credentials: printf '%s:%s' "$HTTP_AUTH_USER" "$HTTP_AUTH_PASS" | base64
 ```
 
 ### Method enforcement (405 + Allow)
@@ -405,8 +405,8 @@ Every field in `httpserver/config.py`. Paths are derived from the package locati
 
 | **Field**      | **Type** | **Default**                                          | **Effect**                                                          |
 | -------------- | -------- | ---------------------------------------------------- | ------------------------------------------------------------------- |
-| `USERNAME`     | str      | env `HTTP_AUTH_USER`, else `soham`                   | DELETE auth username                                                |
-| `PASSWORD`     | str      | env `HTTP_AUTH_PASS`, else `Soham@2020`              | DELETE auth password                                                |
+| `USERNAME`     | str      | env `HTTP_AUTH_USER`, else hardcoded default         | DELETE auth username                                                |
+| `PASSWORD`     | str      | env `HTTP_AUTH_PASS`, else hardcoded default         | DELETE auth password                                                |
 | `ROOT`         | str      | `<base>/www`                                         | Document root; all served paths resolve under it                    |
 | `VAR_DIR`      | str      | `<base>/var`                                         | Runtime data directory (created at startup)                         |
 | `ETAG_CSV`     | str      | `<base>/var/etag.csv`                                | ETag store file                                                     |
